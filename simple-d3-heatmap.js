@@ -824,6 +824,12 @@ class SimpleD3Heatmap {
 				colors = d3.scaleSequential(d3.interpolateCubehelix(this.minColor, this.maxColor))
 					.domain([minValue, maxValue]);
 				break;
+			case 4:
+				colors = d3.scaleLinear()
+					.range([0, 1])
+					.domain([0, 1]);
+				break;
+
 		}
 
 		return colors(value);
