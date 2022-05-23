@@ -1,6 +1,6 @@
 {
   "name": "@tcs-open-source/simple-d3-heatmap",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "This module allows you to create nicely looking heatmap calendars with ease.",
   "main": "simple-d3-heatmap.js",
   "files": [
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/team-centric-software/simple-d3-heatmap.git"
+    "url": "git+https://github.com/FrancescoErmini/simple-d3-heatmap.git"
   },
   "author": "",
   "license": "ISC",

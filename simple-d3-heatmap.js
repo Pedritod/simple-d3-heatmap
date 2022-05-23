@@ -831,7 +831,7 @@ class SimpleD3Heatmap {
 				break;
 
 		}
-
+		console.log(colors(value));
 		return colors(value);
 	}
 }
