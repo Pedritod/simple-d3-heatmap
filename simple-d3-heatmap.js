@@ -186,7 +186,7 @@ class SimpleD3Heatmap {
 						day: parseFloat(i), // range: 0-6
 						hour: parseFloat(j), // range: 0 - 23
 						year: parseFloat(data[0].year), // e.g. 2017
-						value: 0 // e.g. 5
+						value: -2 // e.g. 5
 					});
 				}
 			}
