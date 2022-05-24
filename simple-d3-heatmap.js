@@ -830,19 +830,19 @@ class SimpleD3Heatmap {
 					.domain([0, 1]);
 				break;
 			case 5:
-				if (value >= 0 && value < 25){
+				if (value === 0){
 					return "rgb(76, 175, 80)" 
 					// verde
 				}
-				if (value >= 25 && value < 50){
+				if (value === 0.1){
 					// yellow
 					return "rgb(255, 221, 0)"
 				}
-				if (value >= 50 && value < 75){
+				if (value === 0.4){
 					// orange
 					return "rgb(255, 165, 0)"
 				}
-				if(value >= 75 && value <= 100){
+				if(value === 1.0){
 					// red
 					return "#F03E3E"
 				}
