@@ -122,7 +122,6 @@ class SimpleD3Heatmap {
 
 			const existsIndex = data2.findIndex(el => el.day === date.getUTCDay() && el.hour === date.getUTCHours());
 			if (existsIndex !== -1) {
-				data2[existsIndex].value += parseFloat(data[d]);
 				return;
 			}
 
@@ -831,7 +830,7 @@ class SimpleD3Heatmap {
 				break;
 			case 5:
 				if (value === 0){
-					return "rgb(76, 175, 80)" 
+					return "rgb(76, 175, 80)"
 					// verde
 				}
 				if (value === 0.1){
