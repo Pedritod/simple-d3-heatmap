@@ -192,8 +192,6 @@ class SimpleD3Heatmap {
 		}
 
 		const values = Object.values(data).map((el) => { return el.value });
-		const maxValue = Math.max(...values);
-		const minValue = Math.min(...values);
 
 		// sort the data by day then by hour
 		data.sort((a, b) => {
@@ -260,7 +258,7 @@ class SimpleD3Heatmap {
 					return `animation: simple-d3-heatmaps-cubeanim 0.25s ease-out ${0.00275 * i}s; animation-fill-mode: backwards;`;
 				}
 			})
-			.style("fill", function(d) { return self.getColor(minValue, maxValue, d.value)} )
+			.style("fill", function(d) { return self.getColor(d.value)} )
 			.on("mouseover", function(d) {
 				tooltipDiv.style("display", "block")
 					.html(d.value);
@@ -804,31 +802,7 @@ class SimpleD3Heatmap {
 	}
 
 	// create a color depending on colorMode and minvalue/maxvalue and actual value
-	getColor(minValue, maxValue, value) {
-		let colors;
-
-		switch (this.colorMode) {
-			default:
-			case 1: // linear color scale
-				colors = d3.scaleLinear()
-					.range([this.minColor, this.maxColor])
-					.domain([minValue, maxValue]);
-				break;
-			case 2: // sqrt color scale
-				colors = d3.scaleSqrt()
-					.range([this.minColor, this.maxColor])
-					.domain([0, maxValue]);
-				break;
-			case 3: // cubehelix color scale
-				colors = d3.scaleSequential(d3.interpolateCubehelix(this.minColor, this.maxColor))
-					.domain([minValue, maxValue]);
-				break;
-			case 4:
-				colors = d3.scaleLinear()
-					.range([0, 1])
-					.domain([0, 1]);
-				break;
-			case 5:
+	getColor(value) {
 				if (value === 0){
 					return "rgb(76, 175, 80)"
 					// verde
@@ -849,11 +823,5 @@ class SimpleD3Heatmap {
 					// gray
 					return "rgb(211, 211, 211)"
 				}
-
-
-		}
-		// "rgb (211, 211, 211)"
-		console.log(colors(value));
-		return colors(value);
 	}
 }
