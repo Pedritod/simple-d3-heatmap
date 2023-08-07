@@ -819,6 +819,10 @@ class SimpleD3Heatmap {
 					// red
 					return "#F03E3E"
 				}
+				if(value === -1){
+					// red
+					return "rgba(28,228,250,0)"
+				}
 				else{
 					// gray
 					return "rgb(211, 211, 211)"
