@@ -243,11 +243,11 @@ class SimpleD3Heatmap {
 
 		// Calculate 1 week ago from the current date
 		const oneWeekAgo = new Date();
-		oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+		oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
 
 		// Convert the date to the format used in the data
-		const oneWeekAgoDay = oneWeekAgo.getUTCDay();
-		const oneWeekAgoHour = oneWeekAgo.getUTCHours();
+		const oneWeekAgoDay = oneWeekAgo.getDay();
+		const oneWeekAgoHour = oneWeekAgo.getHours();
 		// add square to heatmap
 		svg.selectAll()
 			.data(data)
