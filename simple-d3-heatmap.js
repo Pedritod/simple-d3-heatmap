@@ -173,7 +173,6 @@ class SimpleD3Heatmap {
 		// reverse the days array so the days are in correct order
 		days.reverse();
 
-		// go through all days in the week
 		for (let i = 0; i < daysInWeek; i++) {
 			// go through all 24 hours
 			for (let j = 0; j < 24; j++) {
@@ -242,6 +241,13 @@ class SimpleD3Heatmap {
 			.attr("style", `font-family: 'Tahoma', Arial, serif; font-size: ${this.mobileView ? 16 : 12}px;`)
 			.call(yAxis);
 
+		// Calculate 1 week ago from the current date
+		const oneWeekAgo = new Date();
+		oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+		// Convert the date to the format used in the data
+		const oneWeekAgoDay = oneWeekAgo.getUTCDay();
+		const oneWeekAgoHour = oneWeekAgo.getUTCHours();
 		// add square to heatmap
 		svg.selectAll()
 			.data(data)
@@ -258,7 +264,14 @@ class SimpleD3Heatmap {
 					return `animation: simple-d3-heatmaps-cubeanim 0.25s ease-out ${0.00275 * i}s; animation-fill-mode: backwards;`;
 				}
 			})
-			.style("fill", function(d) { return self.getColor(d.value)} )
+			.style("fill", function(d) {
+				if (d.day === oneWeekAgoDay && d.hour === oneWeekAgoHour) {
+					// Apply a different color or value for 1 week ago
+					return self.getColor(-1);
+				} else {
+					return self.getColor(d.value);
+				}
+			})
 			.on("mouseover", function(d) {
 				tooltipDiv.style("display", "block")
 					.html(d.value);
