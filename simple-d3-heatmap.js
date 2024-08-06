@@ -816,6 +816,10 @@ class SimpleD3Heatmap {
 
 	// create a color depending on colorMode and minvalue/maxvalue and actual value
 	getColor(value) {
+				if (isNaN(value)) {
+					// white
+					return "rgb(255, 255, 255)";
+				}
 				if (value === 0){
 					return "rgb(76, 175, 80)"
 					// verde
